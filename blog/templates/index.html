@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+    <div class="main container">
+        <div class="ui grid">
+            <div class="ui row">
+                <div class="twelve wide column">
+                    <div class="ui grid">
+                        <div class="four wide column">
+                            &nbsp;
+                        </div>
+                        <div class="eight wide column">
+                            <h1>MyRobot Journal</h1>
+                            </hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui grid">
+            <div class="ui row">
+                <!-- Main Blog Content -->
+                <div class="twelve wide column" role="content">
+                    {% for post in posts %}
+                        <article>
+
+                            <div class="ui grid">
+                                <div class="ui row">
+                                    <div class="four wide column">
+                                        &nbsp;
+                                    </div>
+                                    <div class="eight wide column">
+                                        <h3><a href="#">{{ post.title }}</a></h3>
+                                        <h6>Written by <a href="#">{{ post.author }}</a> on {{ post.timestamp }}.</h6>
+
+                                        <p>{{ post.bodytext|linebreaksbr|urlize }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <hr />
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
